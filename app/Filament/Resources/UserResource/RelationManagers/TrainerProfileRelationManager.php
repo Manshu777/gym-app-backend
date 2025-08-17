@@ -21,6 +21,18 @@ class TrainerProfileRelationManager extends RelationManager
                 Forms\Components\TextInput::make('user')
                     ->required()
                     ->maxLength(255),
+                 Forms\Components\DatePicker::make('dob')
+                    ->required(),
+                Forms\Components\TextInput::make('address')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('city')
+                    ->maxLength(100),
+                Forms\Components\Textarea::make('about_me')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('certifications')
+                    ->columnSpanFull(),
+                Forms\Components\Textarea::make('awards')
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -30,6 +42,11 @@ class TrainerProfileRelationManager extends RelationManager
             ->recordTitleAttribute('user')
             ->columns([
                 Tables\Columns\TextColumn::make('user'),
+                 Tables\Columns\TextColumn::make('dob')
+                    ->date(),
+                 Tables\Columns\TextColumn::make('city'),
+                 Tables\Columns\TextColumn::make('about_me')
+                    ->limit(50),
             ])
             ->filters([
                 //
